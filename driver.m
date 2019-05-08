@@ -5,11 +5,11 @@ clc;
 addpath('./simpleNN/');
 addpath('./simpleNN/cnn');
 addpath('./simpleNN/opt');
-a=784;
+a=28;
 d=1;
-b=1;
+b=28;
 %if nargin == 6
-    options = '';
+options = '-iter_max 50 -epoch_max 5 -bsize 128 -momentum 0 -s 2';
 %end
 datapath='./extra/mnist.mat';
 datapath_t='./extra/mnist.t.mat';
@@ -58,4 +58,5 @@ Z = Z - mean_tr;
 
 [predicted_label, acc] = cnn_predict(y, Z, model);
 fprintf('test_acc: %g\n', acc);
+
 
